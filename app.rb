@@ -5,13 +5,16 @@ get("/") do
   erb(:homepage)
 end
 
-
 get("/square/new") do
-
-  @square = @num*@num
-
-  erb :square
+  erb(:square/new)
 end
+
+get "/square/results" do
+  @number = params[:number].to_f
+  @result = @number**2
+  erb(:square/results)
+end
+
 
 get("/square_root/new") do
 

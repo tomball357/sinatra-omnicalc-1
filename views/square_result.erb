@@ -1,10 +1,10 @@
 <h1>Square Results </h1>
 
 <p>Number</p>
-<% num %>
+<%= @num %>
 
 <p>Square</p>
-<% num**num %>
+<%= @num**@num %>
 
 <a href="/square/new">
   Calculate another square
@@ -16,9 +16,6 @@
 <dl>
   <dt>First number</dt>
   <dd><%= @first_num %></dd>
-
-  <dt>Second number</dt>
-  <dd><%= @second_num %></dd>
 
   <dt>Result</dt>
   <dd><%= @sum %></dd>

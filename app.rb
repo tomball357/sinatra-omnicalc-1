@@ -30,8 +30,6 @@ get("/square_root/results") do
 
 get("/payment/new") do
 
-  @square = @num*@num
-
   erb :payment_form
 end
 
@@ -44,7 +42,11 @@ get ("/payment/results") do
 
 get("/random/new") do
 
-  @new = rand(1..@num)
-
   erb :random_form
+
+
+get ("/random/results") do
+  @result = rand(@min..@max).to_f
+
+
 end

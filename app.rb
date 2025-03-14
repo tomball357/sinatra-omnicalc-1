@@ -2,16 +2,34 @@ require "sinatra"
 require "sinatra/reloader"
 
 get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+  erb(:homepage)
 end
 
 
-get "/square" do
+get("/square/new") do
 
   @square = @num*@num
 
-  erb :process_roll
+  erb :square
+end
+
+get("/square_root/new") do
+
+  @square = @num*@num
+
+  erb :square_root
+end
+
+get("/payment/new") do
+
+  @square = @num*@num
+
+  erb :payment
+end
+
+get("/random/new") do
+
+  @new = rand(1..@num)
+
+  erb :random
 end

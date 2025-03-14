@@ -34,9 +34,10 @@ get("/payment/new") do
 end
 
 get ("/payment/results") do
-  @apr =
-  @years =
-  @principal =
+  @apr = params[:number].to_f
+  @years = params[:number].to_f
+  @principal = params[:number].to_fs(:currency)
+
 end
 
 
@@ -46,6 +47,7 @@ get("/random/new") do
 end
 
 get ("/random/results") do
-  @result = rand(@min..@max).to_f
+  result = rand(@min..@max)
+  @result = result.round(16)
 
 end

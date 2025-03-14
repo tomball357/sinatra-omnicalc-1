@@ -1,2 +1,27 @@
-<label for="payment_id">Payment</label>
-<input id="payment_id" name="payment">
+<h1>Loan Payment Results</h1>
+
+<% if params[:apr] && params[:years] && params[:principal] %>
+  <% 
+    apr = params[:apr].to_f / 100 / 12
+    years = params[:years].to_f * 12
+    principal = params[:principal].to_f
+
+    if apr > 0
+      monthly_payment = (apr * principal) / (1 - (1 + apr) ** -years)
+    else
+      monthly_payment = principal / years # Handles zero APR edge case
+    end
+  %>
+
+  <p><strong>APR:</strong> <%= format("%.8f%%", params[:apr].to_f) %></p>
+  <p><strong>Number of years:</strong> <%= params[:years] %></p>
+  <p><strong>Principal:</strong> $<%= format("%.2f", params[:principal].to_f) %></p>
+
+  <h2>Monthly Payment</h2>
+  <p><strong>$<%= format("%.2f", monthly_payment) %></strong></p>
+
+<% else %>
+  <p>Please enter all required fields in the form.</p>
+<% end %>
+
+<a href="/payment/new">Calculate another payment</a>
